@@ -19,7 +19,7 @@ jobs:
         with:
           # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
           # Ref: https://github.com/actions/setup-node#supported-version-syntax
-          node-version: "20.11.1"
+          node-version: "20"
       - name: Cache NPM dependencies
         uses: actions/cache@v4
         with:
@@ -31,6 +31,10 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+
+      - name: List Build Output
+        run: ls -l ./public
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
